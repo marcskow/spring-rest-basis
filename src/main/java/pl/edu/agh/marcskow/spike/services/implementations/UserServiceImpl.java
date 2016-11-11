@@ -52,7 +52,7 @@ public class UserServiceImpl implements UserService {
     public Optional<UserDataModel> editUser(UserSpike user, @Valid UserDataModel newUserDataModel) {
         UserData newUserData = new UserData(newUserDataModel);
         String newEmail = newUserData.getEmail().toLowerCase().trim();
-        if (!(userRepository.countUserByUserData_email(newEmail) == 0))
+        if (findUserByEmail(newEmail).isPresent())
             return Optional.empty();
         user.setUserData(newUserData);
         userRepository.save(user);

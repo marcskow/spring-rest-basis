@@ -11,6 +11,4 @@ public interface UserRepository extends JpaRepository<UserSpike, Long> {
     UserSpike findUserByUserData_Email(String email);
     UserSpike findUserByUsername(String username);
     UserSpike findUserById(Long id);
-
-    Long countUserByUserData_email(String email);
 }
